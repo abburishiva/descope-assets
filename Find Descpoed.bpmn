@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <collaboration id="Collaboration">
+    <participant id="descope_assets" name="Descope Assets" processRef="descoping_assets"></participant>
+  </collaboration>
+  <process id="descoping_assets" name="Descoping Assets" isExecutable="true">
+    <laneSet id="laneSet_descoping_assets">
+      <lane id="lane1">
+        <flowNodeRef>startevent1</flowNodeRef>
+        <flowNodeRef>scripttask1</flowNodeRef>
+        <flowNodeRef>exclusivegateway1</flowNodeRef>
+        <flowNodeRef>usertask1</flowNodeRef>
+        <flowNodeRef>scripttask2</flowNodeRef>
+        <flowNodeRef>endevent1</flowNodeRef>
+        <flowNodeRef>usertask2</flowNodeRef>
+      </lane>
+    </laneSet>
+    <startEvent id="startevent1" name="Start" activiti:initiator="startUser">
+      <extensionElements>
+        <activiti:formProperty id="targetDataSetRegistryDomainId" name="Please Enter &quot;targetDataSetRegistryDomainId&quot;" type="string" default="23f99eba-f72d-448a-9d36-30b4a5d67f0a" readable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="dataOfferingAssetTypeId" name="Please Enter &quot;dataOfferingAssetTypeId&quot;" type="string" default="f9a31319-eb7f-45df-a871-8bd55c9c51a2" readable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="dataSetAssetTypeId" name="Please Enter &quot;dataSetAssetTypeId&quot;" type="string" default="0000000-0000-0000-0001-000400000001" readable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="fileAssettypeId" name="Please Enter &quot;fileAssettypeId&quot;" type="string" default="00000000-0000-0000-0000-000000031304" readable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="databaseAssetTypeId" name="Please Enter 'Database Asset Type Id'" type="string" default="77fb6b2e-38a0-40b1-be59-da9ae9013a60" readable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="s3AssetTypeId" name="Please Enter'S3 File System Asset Type Id'" type="string" default="00000000-0000-0000-0001-002400000000" readable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="hdfsAssetTypeId" name="Please Enter &quot;hdfsAssetTypeId&quot;" type="string" default="d0ea8065-f62a-439b-9483-b26efe454984" readable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="impalaAssetTypeId" name="Please Enter &quot;impalaAssetTypeId&quot;" type="string" default="cf469bc4-0e62-43db-9a61-a6318b18abc6" readable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="descopedStatus" name="Please Enter &quot;Descoped Status Id&quot;" type="string" default="00000000-0000-0000-0000-000000005052" readable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="dataProcessorAssetTypeId" name="Please Enter &quot;dataProcessorAssetTypeId&quot;" type="string" default="e2a04596-b7fa-4bd1-a8c3-8f5e764e8921" readable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="dataSetInheritedFromDataSetRelTypeId" name="Please Enter &quot;dataSetAssociatedInheritedDataSetRelTypeId&quot;" type="string" default="eb1aa0a2-7d60-4af9-b597-640f5bcc6bed" readable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="dataOfferingInheritedFromDataOfferingRelTypeId" name="Please Enter &quot;dataOfferingAssociatedInheritedDataOfferingRelTypeId&quot;" type="string" default="d56e47c7-a5d0-4a37-9d38-1ff809b9f173" readable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="dataProcessorInheritedFromDataProcessorRelTypeId" name="Please Enter &quot;dataProcessorAssociatedInheritedDataProcessorRelTypeId&quot;" type="string" default="a301c26d-d2fb-4cfc-b5bb-6fcc80ec5608" readable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="schemaInheritedFromSchemaRelTypeId" name="Please Enter &quot;schemaInheritedFromSchemaRelTypeId&quot;" type="string" default="d376e6cd-4eab-4a52-99e3-efb11317eed1" readable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="tableInheritedFromTableRelTypeId" name="Please Enter &quot;tableInheritedFromTableRelTypeId&quot;" type="string" default="81ec6800-2627-4231-a5c2-ced189e59553" readable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="columnInheritedFromColumnRelTypeId" name="Please Enter &quot;columnInheritedFromColumnRelTypeId&quot;" type="string" default="44dcf541-24d6-42a9-88a1-4ad1fda354aa" readable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="schemaAssetTypeId" name="Please Enter &quot;schemaAssetTypeId&quot;" type="string" default="00000000-0000-0000-0001-000400000002" readable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="columnAssetTypeId" name="Please Enter &quot;columnAssetTypeId&quot;" type="string" default="00000000-0000-0000-0000-000000031008" readable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="tableAssettypeId" name="Please Enter &quot;tableAssettypeId&quot;" type="string" default="00000000-0000-0000-0000-000000031007" readable="false" required="true"></activiti:formProperty>
+      </extensionElements>
+    </startEvent>
+    <scriptTask id="scripttask1" name="Validations" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script><![CDATA[import com.collibra.dgc.core.api.component.instance.AssetApi
+import com.collibra.dgc.core.api.component.instance.DomainApi
+import com.collibra.dgc.core.api.component.instance.RelationApi
+import com.collibra.dgc.core.api.dto.PagedResponse
+import com.collibra.dgc.core.api.dto.instance.asset.AddAssetRequest
+import com.collibra.dgc.core.api.dto.instance.asset.ChangeAssetRequest
+import com.collibra.dgc.core.api.dto.instance.asset.FindAssetsRequest
+import com.collibra.dgc.core.api.dto.instance.attribute.AddAttributeRequest
+import com.collibra.dgc.core.api.dto.instance.attribute.FindAttributesRequest
+import com.collibra.dgc.core.api.dto.instance.relation.FindRelationsRequest
+import com.collibra.dgc.core.api.model.instance.Asset
+import com.collibra.dgc.core.api.model.instance.Relation
+import com.collibra.dgc.core.api.model.instance.attribute.Attribute
+
+/*---------Reusable code starts here---------*/
+def findAssets(name, matchMode,statusIds,typeIds, domainId,communityId) {
+	
+		List<Asset> assets = new ArrayList<Asset>();
+		FindAssetsRequest.Builder   builder         = new FindAssetsRequest().builder();
+		Boolean moreToProcess                               = true;
+		int offset                                          = 0;
+		while(moreToProcess){
+			builder
+					.offset(offset)
+					.limit(1000)
+			PagedResponse<Asset> response  = assetApi.findAssets(builder.name(name).nameMatchMode(matchMode).typeIds(typeIds).domainId(domainId).statusIds(statusIds).communityId(communityId).build());
+			assets.addAll(response.getResults());
+			if(assets.size()==response.total){
+				moreToProcess = false;
+			}
+			else
+			{
+				offset = assets.size();
+			}
+		}
+		return assets;
+	}
+
+def findAttributes(assetId, typeIds) {
+
+	List<Attribute> attributes = new ArrayList<Attribute>();
+	FindAttributesRequest.Builder builder = new FindAttributesRequest().builder();
+	Boolean moreToProcess  = true;
+	int offset = 0;
+	while(moreToProcess){
+		builder
+				.offset(offset)
+				.limit(1000)
+		PagedResponse<Attribute> response  = attributeApi.findAttributes(builder.assetId(assetId).typeIds(typeIds).build());
+		attributes.addAll(response.getResults());
+		if(attributes.size()==response.total){
+			moreToProcess = false;
+		}
+		else {
+			offset = attributes.size();
+		}
+	}
+	return attributes;
+}
+
+def addAsset(name,displayName,typeId,status,domainId) {
+	assetApi.addAsset(AddAssetRequest.builder()
+			.name(name)
+			.typeId(typeId)
+			.domainId(domainId)
+			.displayName(displayName)
+			.status(status)
+			.build()
+			)
+}
+
+def findRelations(sourceId,relationTypeId,targetId) {
+
+	List<Relation> relations = new ArrayList<Relation>();
+	FindRelationsRequest.Builder   builder         = new FindRelationsRequest().builder();
+	Boolean moreToProcess                               = true;
+	int offset                                          = 0;
+	while(moreToProcess){
+		builder
+				.offset(offset)
+				.limit(1000)
+		PagedResponse<Relation> response  =  relationApi.findRelations(builder.sourceId(sourceId).targetId(targetId).relationTypeId(relationTypeId).build());
+		relations.addAll(response.getResults());
+		if(relations.size()==response.total){
+			moreToProcess = false;
+		}
+		else {
+			offset = relations.size();
+		}
+	}
+	return relations;
+}
+
+def addAttribute( assetId, typeId, value) {
+	attributeApi.addAttribute(
+			AddAttributeRequest.builder()
+			.assetId(assetId)
+			.typeId(typeId)
+			.value(value)
+			.build()
+			)
+}
+
+def changeAsset(id,name,domainId,typeId,statusId,displayName) {
+	assetApi.changeAsset(ChangeAssetRequest.builder()
+			.id(id)
+			.name(name)
+			.displayName(displayName)
+			.typeId(typeId)
+			.domainId(domainId)
+			.statusId(statusId)
+			.build()
+			)
+}
+
+/*
+def getAndAddAttributeValues(attributeInAsset,newAssetId) {
+	for(attribute in attributeInAsset) {
+		def attributeId = attribute.getId()
+		def attributeTypeId = attributeApi.getAttribute(attributeId).getType().getId()
+		loggerApi.info("attributeTypeId---"+attributeTypeId)
+
+		def attributeValue = attributeApi.getAttribute(attributeId).getValue()
+		loggerApi.info("attributeValue-----"+attributeValue)
+
+		addAttribute( newAssetId, attributeTypeId, attributeValue)
+	}
+}
+*/
+
+/*---------Reusable code ends here---------*/
+
+
+/*---------Actual code starts here---------*/
+
+def presentAssetType =  assetApi.getAsset(string2Uuid(item.id)).getType().getId()
+loggerApi.info('presentAssetType--'+presentAssetType)
+
+def currentAssetInfo = assetApi.getAsset(string2Uuid(item.id))
+def currentAssetFullName = currentAssetInfo.getName()
+def currentAssetDisplayName=currentAssetInfo.getDisplayName()
+
+loggerApi.info('dsDiplayName--'+currentAssetDisplayName)
+loggerApi.info("currentAssetFullName-->"+currentAssetFullName)
+
+def presentDomian = domainApi.getDomain(string2Uuid(item.getVocabulary())).getType().getId()
+loggerApi.info("presentDomian-->"+presentDomian)
+
+def dataOfferingFound = true
+def dataSetFound = true
+def dataProcessorFound = true
+def schemaFound = true
+def tableFound = true
+def columnFound = true
+def attributeInAsset
+def attributeInAsset1
+
+// Finding data set asset has associated and inherited from data set relation type
+if(presentAssetType == string2Uuid(dataOfferingAssetTypeId)) {
+	def targetRel= findRelations(null,string2Uuid(dataSetInheritedFromDataSetRelTypeId),itemV2.getId())
+	loggerApi.info("targetRel==>"+targetRel)
+
+	if(!targetRel.isEmpty()) {
+		dataOfferingFound = false
+		loggerApi.info("dataOfferingFound ======== "+dataOfferingFound)
+	}
+}
+
+// Finding data offering asset has associated and inherited from data offering relation type
+if(presentAssetType == string2Uuid(dataSetAssetTypeId)) {
+	def targetRel= findRelations(null,string2Uuid(dataOfferingInheritedFromDataOfferingRelTypeId),itemV2.getId())
+	loggerApi.info("targetRel==>"+targetRel)
+
+	if(!targetRel.isEmpty()) {
+		dataSetFound = false
+		loggerApi.info("dataOfferingFound ======== "+dataOfferingFound)
+	}
+}
+
+// Finding data processor asset has associated and inherited from data processor relation type
+if(presentAssetType == string2Uuid(dataProcessorAssetTypeId)) {
+	def targetRel= findRelations(null,string2Uuid(dataProcessorInheritedFromDataProcessorRelTypeId),itemV2.getId())
+	loggerApi.info("targetRel==>"+targetRel)
+
+	if(!targetRel.isEmpty()) {
+		dataProcessorFound = false
+		loggerApi.info("dataOfferingFound ======== "+dataOfferingFound)
+	}
+}
+
+// Finding schema asset has associated and inherited from schema relation type
+if(presentAssetType == string2Uuid(schemaAssetTypeId)) {
+	def targetRel= findRelations(null,string2Uuid(schemaInheritedFromSchemaRelTypeId),itemV2.getId())
+	loggerApi.info("targetRel==>"+targetRel)
+
+	if(!targetRel.isEmpty()) {
+		schemaFound = false
+		loggerApi.info("schemaFound ======== "+schemaFound)
+	}
+}
+
+// Finding table asset has associated and inherited from table relation type
+if(presentAssetType == string2Uuid(tableAssettypeId)) {
+	def targetRel= findRelations(null,string2Uuid(tableInheritedFromTableRelTypeId),itemV2.getId())
+	loggerApi.info("targetRel==>"+targetRel)
+
+	if(!targetRel.isEmpty()) {
+		tableFound = false
+		loggerApi.info("tableFound ======== "+tableFound)
+	}
+}
+
+// Finding column asset has associated and inherited from column relation type
+if(presentAssetType == string2Uuid(columnAssetTypeId)) {
+	def targetRel= findRelations(null,string2Uuid(columnInheritedFromColumnRelTypeId),itemV2.getId())
+	loggerApi.info("targetRel==>"+targetRel)
+
+	if(!targetRel.isEmpty()) {
+		columnFound = false
+		loggerApi.info("columnFound ======== "+columnFound)
+	}
+}
+execution.setVariable("presentAssetType",presentAssetType)
+execution.setVariable("dataOfferingFound",dataOfferingFound)
+execution.setVariable("dataSetFound",dataSetFound)
+execution.setVariable("schemaFound",schemaFound)
+execution.setVariable("tableFound",tableFound)
+execution.setVariable("columnFound",columnFound)
+execution.setVariable("dataProcessorFound",dataProcessorFound)
+execution.setVariable("currentAssetFullName",currentAssetFullName)
+execution.setVariable("currentAssetDisplayName",currentAssetDisplayName)
+
+]]></script>
+    </scriptTask>
+    <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="scripttask1"></sequenceFlow>
+    <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
+    <sequenceFlow id="flow2" sourceRef="scripttask1" targetRef="exclusivegateway1"></sequenceFlow>
+    <userTask id="usertask1" name="Not Authorised to descope" activiti:candidateUsers="user(${startUser})">
+      <documentation>You are not authorised to descope the asset as it is promoted</documentation>
+    </userTask>
+    <sequenceFlow id="flow3" sourceRef="exclusivegateway1" targetRef="usertask1">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${dataOfferingFound==false || dataSetFound==false || dataProcessorFound==false || schemaFound==false  || tableFound==false || columnFound==false}]]></conditionExpression>
+    </sequenceFlow>
+    <scriptTask id="scripttask2" name="Adding Assets With Descoped Status" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script><![CDATA[ import com.collibra.dgc.core.api.component.instance.AttributeApi
+import com.collibra.dgc.core.api.dto.MatchMode
+import com.collibra.dgc.core.api.dto.instance.attribute.AddAttributeRequest
+
+// Finding source relations of initiated asset and removing them
+def sourceRel= findRelations(itemV2.getId(),null,null)
+
+if(!sourceRel.isEmpty()) {
+	for(source in sourceRel) {
+		relationApi.removeRelation(source.getId())
+		loggerApi.info("source relations removed")
+	}
+}
+
+
+// Finding target relations of initiated asset and removing them
+def targetRel= findRelations(null,null,itemV2.getId())
+
+if(!targetRel.isEmpty()) {
+	for(target in targetRel) {
+		relationApi.removeRelation(target.getId())
+		loggerApi.info("target relations removed")
+	}
+}
+
+def presentAssetId=assetApi.getAsset(string2Uuid(item.id)).getId()
+def presentAssetTypeId =  assetApi.getAsset(string2Uuid(item.id)).getType().getId()
+def targetAssets
+
+// Finding initiated assets are present in target descoped domain
+def findAssetsInTargetDomain=findAssets(currentAssetFullName, MatchMode.EXACT,null,null,string2Uuid(targetDataSetRegistryDomainId),null)
+
+if(!findAssetsInTargetDomain.isEmpty()) {
+	// If initiated asset name is already present in descoped domain then remove and replace that asset with initiated asset
+	assetApi.removeAsset(findAssetsInTargetDomain.get(0).getId()) 
+	targetAssets=changeAsset(presentAssetId,currentAssetFullName,string2Uuid(targetDataSetRegistryDomainId),presentAssetTypeId,string2Uuid(descopedStatus),currentAssetDisplayName)
+}
+else
+{
+	// If initiated asset name is not present in descoped domain then moving that asset to target descoped domain
+	targetAssets=changeAsset(presentAssetId,currentAssetFullName,string2Uuid(targetDataSetRegistryDomainId),presentAssetTypeId,string2Uuid(descopedStatus),currentAssetDisplayName)
+	loggerApi.info("targetAssets==>"+targetAssets)
+}
+ ]]></script>
+    </scriptTask>
+    <sequenceFlow id="flow4" sourceRef="exclusivegateway1" targetRef="scripttask2">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${dataOfferingFound==true || dataSetFound==true || dataProcessorFound==true || schemaFound==true || tableFound==true || columnFound==true  }]]></conditionExpression>
+    </sequenceFlow>
+    <endEvent id="endevent1" name="End"></endEvent>
+    <sequenceFlow id="flow5" sourceRef="scripttask2" targetRef="usertask2"></sequenceFlow>
+    <userTask id="usertask2" name="Asset Successfully Descoped"></userTask>
+    <sequenceFlow id="flow6" sourceRef="usertask2" targetRef="endevent1"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Collaboration">
+    <bpmndi:BPMNPlane bpmnElement="Collaboration" id="BPMNPlane_Collaboration">
+      <bpmndi:BPMNShape bpmnElement="descope_assets" id="BPMNShape_descope_assets">
+        <omgdc:Bounds height="241.0" width="761.0" x="220.0" y="110.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="lane1" id="BPMNShape_lane1">
+        <omgdc:Bounds height="241.0" width="741.0" x="240.0" y="110.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="310.0" y="180.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="scripttask1" id="BPMNShape_scripttask1">
+        <omgdc:Bounds height="55.0" width="105.0" x="390.0" y="170.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="BPMNShape_exclusivegateway1">
+        <omgdc:Bounds height="40.0" width="40.0" x="540.0" y="178.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="usertask1" id="BPMNShape_usertask1">
+        <omgdc:Bounds height="55.0" width="105.0" x="508.0" y="240.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="scripttask2" id="BPMNShape_scripttask2">
+        <omgdc:Bounds height="60.0" width="105.0" x="620.0" y="168.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="900.0" y="181.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="usertask2" id="BPMNShape_usertask2">
+        <omgdc:Bounds height="55.0" width="105.0" x="760.0" y="170.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="345.0" y="197.0"></omgdi:waypoint>
+        <omgdi:waypoint x="390.0" y="197.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="495.0" y="197.0"></omgdi:waypoint>
+        <omgdi:waypoint x="540.0" y="198.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="560.0" y="218.0"></omgdi:waypoint>
+        <omgdi:waypoint x="560.0" y="240.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="580.0" y="198.0"></omgdi:waypoint>
+        <omgdi:waypoint x="620.0" y="198.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+        <omgdi:waypoint x="725.0" y="198.0"></omgdi:waypoint>
+        <omgdi:waypoint x="760.0" y="197.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="865.0" y="197.0"></omgdi:waypoint>
+        <omgdi:waypoint x="900.0" y="198.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
